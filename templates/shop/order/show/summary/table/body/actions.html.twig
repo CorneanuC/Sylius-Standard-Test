@@ -1,0 +1,21 @@
+<td class="text-end">
+    {% if hookable_metadata.context.item %}        
+        <form method="post" 
+                data-turbo="false"
+                action="{{ path('sylius_shop_account_order_item_reorder', {
+                    '_locale': app.request.locale,
+                    'id': hookable_metadata.context.item.id
+                }) }}"
+        >
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('reorder_item') }}">
+            
+            <button type="submit" class="ui mini primary button">
+                <i class="redo icon"></i> {{ 'Reorder'|trans }}
+            </button>
+        </form>
+    {% else %}
+        <div class="ui tiny disabled button">
+            <i class="ban icon"></i> {{ 'sylius.ui.unavailable'|trans }}
+        </div>
+    {% endif %}
+</td>

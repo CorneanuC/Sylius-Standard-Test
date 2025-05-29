@@ -11,6 +11,10 @@ services:
         # fetching services directly from the container via $container->get() won't work
         public: false
 
+    App\Security\Voter\OrderVoter:
+        tags:
+            - { name: security.voter }
+
     _instanceof:
         Sylius\Bundle\ResourceBundle\Controller\ResourceController:
             autowire: false

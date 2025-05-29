@@ -24,3 +24,14 @@ sylius_shop_request_password_reset_token_redirect:
     defaults:
         route: sylius_shop_request_password_reset_token
         permanent: false
+
+sylius_shop_account_order_item_reorder:
+    path: /{_locale}/account/order-items/{id}/reorder
+    controller: App\Controller\OrderItemReorderController::reorder
+    methods: [POST]
+    requirements:
+        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+    defaults:
+        _sylius:
+            permission: true
+            csrf_protection: true
